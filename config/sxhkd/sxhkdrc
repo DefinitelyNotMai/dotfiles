@@ -1,0 +1,51 @@
+# RELOAD SXHKD
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# SYSTEM CONTROLS
+super + shift + Escape
+	dmenusys
+
+# APP KEYBINDS
+super + Return
+	st
+super + { ,shift} + d
+	{dmenu_run, dunst-stat}
+super + { ,shift} + w
+	{firefox, brave}
+super + { ,shift} + r
+	{st -e lfrun, pcmanfm}
+super + { ,shift} + a
+	st -e {htop, nmtui}
+super + { ,shift} + Print
+    scrot { ,-s} /mnt/SlowBoi/Pictures/scrotScreenshots/%m-%d-%Y-%T-screenshot.png
+super + { ,shift,ctrl} + F1
+	{keepassxc, otpclient, virtualbox}
+super + { ,shift,ctrl} + F2
+	{freetube, obs-studio, qbittorrent}
+super + F3
+	st -e bc
+super + ctrl + x
+    slock
+super + { ,shift,ctrl,alt} + grave
+	{dmenumount, dmenuumount, dmenuvpn, dmenutor}
+super + { ,shift,alt} + m
+	{st -e ncmpcpp, mpd, killall mpd}
+super + n
+	st -e newsboat
+super + ctrl + v
+	st -e pulsemixer
+
+# DUNST CONTROLS
+super + { ,shift,ctrl,alt} + slash
+    dunstctl {close, close-all, history-pop, context}
+
+# MEDIA KEYS
+super + { ,shift,ctrl} + BackSpace
+	xbacklight -set {5, 1, 100}
+XF86MonBrightness{Down,Up}
+    xbacklight -{dec,inc} 5
+XF86Audio{Lower,Raise}Volume
+	pulsemixer --change-volume {-5,+5}
+XF86AudioMute
+	pulsemixer --toggle-mute

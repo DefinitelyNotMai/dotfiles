@@ -1,0 +1,9 @@
+#!/bin/sh
+
+case "$(printf "Memory\nWiFi\nBattery\nDate & Time" | dmenu -i -p 'Show status: ')" in
+    Memory) notify-send "MEMORY USED" "$(free -m | grep Mem | awk '{print $3}') / 11717" ;;
+    WiFi) notify-send "CURRENT WIFI" "$(nmcli -t -f name connection show --active)" ;;
+    Battery) notify-send "BATTERY LEFT" "$(cat /sys/class/power_supply/BAT0/capacity)%" ;;
+    "Date & Time") notify-send "DATE & TIME" "$(date "+%D │ %H:%M")" ;;
+    *) exit 1 ;;
+esac

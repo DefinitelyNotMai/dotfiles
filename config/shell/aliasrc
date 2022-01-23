@@ -1,0 +1,42 @@
+# SYSTEMCTL
+alias SS="sudo systemctl"
+
+# EDITOR
+alias \
+    v="nvim" \
+    sv="sudoedit"
+
+# PACKAGE MANAGER
+alias \
+    p="sudo pacman" \
+    pa="paru"
+
+# CD
+alias \
+    ..="cd .." \
+    .2="cd ../.." \
+    .3="cd ../../.." \
+    .4="cd ../../../.." \
+    .5="cd ../../../../.."
+
+# CP, MV, RM
+alias \
+    cp="cp -rvi" \
+    mv="mv -vi" \
+    rm="rm -vi"
+
+# LS
+alias \
+    ls="ls --color=auto --group-directories-first" \
+    la="ls -a --color=auto --group-directories-first" \
+    ll="ls -l --color=auto --group-directories-first" \
+    l="ls -halF --color=auto --group-directories-first" \
+
+# GREP
+alias grep="grep --color=auto"
+
+# JOURNAL
+alias jctl="journalctl -p 3 -xb"
+
+# YOUTUBE-DL
+alias yt="youtube-dl -f bestvideo+bestaudio"

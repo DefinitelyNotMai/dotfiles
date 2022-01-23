@@ -1,0 +1,38 @@
+#!/bin/sh
+
+# Dirty script I made for downloading sauce :3
+# TODO: Try to make it more efficient, probably much better if I use curl.
+
+userPrompt() {
+    printf "Left click image to expand -> Right click image -> Open Image in new tab -> Take note of 7-digit gallery ID in URL\n"
+    printf "Enter gallery ID: "
+    IFS= read -r galleryID
+}
+
+downloadJPG() {
+    while true; do
+    wget https://i.nhentai.net/galleries/"$galleryID"/"$i".jpg || break
+    i=$(( i + 1 ));
+    done
+}
+
+downloadPng() {
+    while true; do
+    wget https://i.nhentai.net/galleries/"$galleryID"/"$i".png || break
+    i=$(( i + 1 ));
+    done
+}
+
+downloadGallery() {
+    i=1;
+    
+    if true ; then
+        downloadJPG;
+    else
+        downloadPNG;
+        return
+    fi
+}
+
+userPrompt
+downloadGallery
