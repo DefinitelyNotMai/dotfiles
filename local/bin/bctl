@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Script to manipulate brightness. Must be executed with sudo.
+
+brd=/sys/class/backlight/intel_backlight/brightness
+brm=$(cat $brd)
+
+case $1 in
+    up) echo $(( brm + 375 )) > $brd ;;
+    down) echo $(( brm - 365 )) > $brd ;;
+    lowest) echo "1" > $brd ;;
+    highest) echo "7500" > $brd ;;
+    *) exit 1 ;;
+esac

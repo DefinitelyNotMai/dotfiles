@@ -3,7 +3,7 @@
 case "$(printf "Exit\nLock\nReboot\nShutdown" | dmenu -i -p 'Action: ')" in
     Exit) kill -TERM "$(pgrep -u "$USER" "\bdwm$")" ;;
     Lock) slock ;;
-    Reboot) sudo reboot now ;;
-    Shutdown) sudo shutdown now ;;
+    Reboot) systemctl reboot -i ;;
+    Shutdown) systemctl poweroff -i ;;
     *) exit 1 ;;
 esac

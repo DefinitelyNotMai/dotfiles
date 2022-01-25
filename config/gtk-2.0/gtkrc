@@ -2,8 +2,8 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "/home/mai/.gtkrc-2.0.mine"
-gtk-theme-name="Material-Black-Blueberry-4.0"
-gtk-icon-theme-name="Tela-black-dark"
+gtk-theme-name="Arc-Gruvbox"
+gtk-icon-theme-name="Arc"
 gtk-font-name="scientifica Medium 8"
 gtk-cursor-theme-name="Adwaita"
 gtk-cursor-theme-size=0
