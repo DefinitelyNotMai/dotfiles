@@ -1,0 +1,25 @@
+#!/bin/sh
+
+install() {
+    cd /tmp
+    wget -O droidcam_latest.zip https://files.dev47apps.net/linux/droidcam_1.8.1.zip
+    unzip droidcam_latest.zip -d droidcam
+    cd droidcam && sudo ./install-client
+    sudo ./install-video
+    sudo ./install-sound
+}
+
+uninstall() {
+    sudo /opt/droidcam-uninstall
+}
+
+echo "Install or Uninstall Droidcam?(i/u): "
+read choice
+if [ "$choice" = "i" ]; then
+    install
+elif [ "$choice" = "u" ]; then
+    uninstall
+else
+    echo "Invalid choice entered. Exiting..."
+    exit 1
+fi
