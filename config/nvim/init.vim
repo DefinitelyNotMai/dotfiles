@@ -18,7 +18,6 @@ Plug 'mbbill/undotree'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'junegunn/goyo.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'vim-airline/vim-airline'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'lambdalisue/fern.vim'
 Plug 'alvan/vim-closetag'
