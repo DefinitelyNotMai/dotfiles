@@ -1,0 +1,9 @@
+config/ncmpcpp/error.log
+config/nvim/lazy-lock.json
+config/shell/zsh/.zcompdump
+config/transmission-daemon/blocklists/
+config/transmission-daemon/resume/
+config/transmission-daemon/torrents/
+config/transmission-daemon/bandwidth-groups.json
+config/transmission-daemon/dht.dat
+config/transmission-daemon/stats.json
