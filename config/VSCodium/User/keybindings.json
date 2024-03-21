@@ -1,0 +1,48 @@
+// Place your key bindings in this file to override the defaults
+[
+  // toggle
+  {
+    "key": "ctrl+b",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+alt+b",
+    "command": "workbench.action.toggleActivityBarVisibility"
+  },
+  // explorer
+  {
+    "key": "ctrl+e",
+    "when": "editorTextFocus",
+    "command": "workbench.files.action.focusFilesExplorer"
+  },
+  {
+    "key": "ctrl+e",
+    "when": "explorerViewletFocus",
+    "command": "workbench.action.focusActiveEditorGroup"
+  },
+  {
+    "key": "shift+5",
+    "when": "explorerViewletFocus",
+    "command": "explorer.newFile"
+  },
+  {
+    "key": "d",
+    "when": "filesExplorerFocus && !inputFocus",
+    "command": "explorer.newFolder"
+  },
+  {
+    "key": "shift+d",
+    "when": "filesExplorerFocus && !inputFocus",
+    "command": "deleteFile"
+  },
+  {
+    "key": "r",
+    "when": "filesExplorerFocus && !inputFocus",
+    "command": "renameFile"
+  },
+  // zen
+  {
+    "key": "ctrl+z",
+    "command": "workbench.action.toggleZenMode"
+  }
+]

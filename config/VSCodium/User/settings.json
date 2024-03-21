@@ -1,0 +1,82 @@
+{
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  },
+  "breadcrumbs.enabled": false,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "editor.cursorBlinking": "solid",
+  "editor.cursorStyle": "block",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontFamily": "Iosevka Fixed Slab",
+  "editor.fontSize": 14,
+  "editor.formatOnSave": true,
+  "editor.linkedEditing": true,
+  "editor.lineNumbers": "relative",
+  "editor.minimap.enabled": false,
+  "editor.rulers": [80, 100, 120],
+  "files.trimTrailingWhitespace": true,
+  "javascript.suggest.autoImports": true,
+  "javascript.updateImportsOnFileMove.enabled": "prompt",
+  "keyboard.dispatch": "keyCode",
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true
+  },
+  "typescript.suggest.autoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "prompt",
+  //
+  "vim.leader": "<Space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // buffer
+    { "before": ["[", "b"], "commands": [":bprevious"] },
+    { "before": ["]", "b"], "commands": [":bnext"] },
+    { "before": ["leader", "b", "d"], "commands": [":bdelete"] },
+    // find
+    {
+      "before": ["leader", "f", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["leader", "f", "g"],
+      "commands": ["workbench.action.findInFiles"]
+    },
+    // lsp
+    {
+      "before": ["leader", "c", "a"],
+      "commands": ["editor.action.codeAction"]
+    },
+    {
+      "before": ["leader", "g", "d"],
+      "commands": ["editor.action.revealDefinition"]
+    },
+    {
+      "before": ["leader", "g", "<S-d>"],
+      "commands": ["editor.action.goToDeclaration"]
+    },
+    {
+      "before": ["leader", "g", "i"],
+      "commands": ["editor.action.goToImplementation"]
+    },
+    {
+      "before": ["leader", "g", "t"],
+      "commands": ["editor.action.goToTypeDefinition"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    { "before": ["<"], "commands": ["editor.action.outdentLines"] },
+    { "before": [">"], "commands": ["editor.action.indentLines"] },
+    { "before": ["<S-j>"], "commands": ["editor.action.moveLinesDownAction"] },
+    { "before": ["<S-k>"], "commands": ["editor.action.moveLinesUpAction"] },
+    { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] }
+  ],
+  //
+  "window.zoomLevel": 0.25,
+  "workbench.colorTheme": "Visual Studio Dark",
+  "workbench.tree.indent": 16,
+  "zenMode.hideLineNumbers": false,
+  "window.menuBarVisibility": "toggle"
+}
