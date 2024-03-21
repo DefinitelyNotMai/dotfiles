@@ -1,0 +1,21 @@
+#!/bin/sh
+
+bgloc="$XDG_DATA_HOME"/bg
+trueloc="$(readlink -f "$1")" &&
+
+case "$(file --mime-type -b "$trueloc")" in
+	image/*)
+		ln -sf "$(readling -f "$1")" "$bgloc"
+		notify-send "swaybg" "Wallpaper changed."
+		;;
+	inode/directory)
+		ln -sf "$(find "$trueloc" -iregex '.*.\(jpg\|jpeg\|png\|gif\) -type f | shuf -n 1')" "$bgloc"
+		notify-send -i "swaybg" "Random wallpaper chosen."
+		;;
+	*)
+		notify-send "swaybg" "ERROR: not a valid image or directory."
+		exit 1
+		;;
+esac
+
+killall swaybg && swaybg -i "$bgloc" -m fill &
