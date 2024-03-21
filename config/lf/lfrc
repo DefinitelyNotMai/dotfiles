@@ -64,8 +64,8 @@ map d
 map <enter> shell
 map r :rename; cmd-end
 map x cut
-map z compress
-map Z extract
+map az compress
+map ax extract
 
 map v $nvim .
 map V $vscodium .
