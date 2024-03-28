@@ -5,16 +5,12 @@ vim.g.netrw_browse_split = 0
 -- run ":h <option>" for more information.
 -- ":h colorcolumn"
 vim.o.colorcolumn = "80,100,120"
-vim.o.completeopt = "menu,menuone,noselect"
+vim.o.completeopt = "menu,menuone,noinsert,noselect"
 vim.o.confirm = true
-vim.o.encoding = "utf-8"
-vim.o.fileencoding = "utf-8"
 vim.o.formatoptions = "jcroqlnt"
 vim.o.grepformat = "%f:%l:%c:%m"
 vim.o.grepprg = "rg --vimgrep"
 vim.o.guicursor = ""
-vim.o.hlsearch = false
-vim.o.ignorecase = false
 vim.o.iskeyword = vim.o.iskeyword .. ",-"
 vim.o.laststatus = 3
 vim.o.list = true
@@ -37,8 +33,7 @@ vim.o.termguicolors = true
 vim.o.timeoutlen = 200
 vim.o.undodir = vim.fn.stdpath("data") .. "/undodir"
 vim.o.undofile = true
-vim.o.updatetime = 200
-vim.o.wildignore = "*/.git/*,*/.node_modules/*"
+vim.o.wildignore = "*/node_modules/*"
 vim.o.wrap = false
 
 -- disabled runtime plugins
