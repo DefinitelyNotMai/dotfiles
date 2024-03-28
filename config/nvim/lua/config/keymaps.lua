@@ -5,7 +5,7 @@ vim.g.mapleader = " "
 opts.desc = "Go to previous buffer."
 vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", opts)
 
-opts.desc = "Go to next buffer."
+opts.desc = "Go to next buffer"
 vim.keymap.set("n", "]b", "<cmd>bnext<cr>", opts)
 
 opts.desc = "Delete current buffer."
@@ -34,10 +34,10 @@ vim.keymap.set("v", "<S-j>", ":m '>+1<cr>gv=gv", opts)
 opts.desc = "Move selection up and autoindent."
 vim.keymap.set("v", "<S-k>", ":m '<-2<cr>gv=gv", opts)
 
-opts.desc = "Decrease Indent."
+opts.desc = "Decrease indent."
 vim.keymap.set("v", "<", "<gv", opts)
 
-opts.desc = "Increase Indent."
+opts.desc = "Increase indent."
 vim.keymap.set("v", ">", ">gv", opts)
 
 opts.desc = "Yank selected text to system clipboard."
@@ -60,7 +60,7 @@ opts.desc = "Move to next search result and center screen."
 vim.keymap.set("n", "n", "nzzzv", opts)
 
 opts.desc = "Move to previous search result and center screen."
-vim.keymap.set("n", "<S-n>", "Nzzzv", opts)
+vim.keymap.set("n", "N", "Nzzzv", opts)
 
 -- other
 opts.desc = "Toggle spellcheck."
@@ -69,7 +69,7 @@ vim.keymap.set("n", "<leader><S-s>", "<cmd>lua vim.o.spell = not vim.o.spell<cr>
 opts.desc = "Open NetRW."
 vim.keymap.set("n", "<leader>e", "<cmd>Explore<cr>", opts)
 
-opts.desc = "Insert error-checking template (For Golang)."
+opts.desc = "Insert error-checking template (for golang)."
 vim.keymap.set("n", "<leader>xg", "oif err != nil {<cr>}<esc>Oreturn err<esc>", opts)
 
 opts.desc = "Search and replace."
