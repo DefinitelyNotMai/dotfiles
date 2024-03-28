@@ -20,7 +20,7 @@ if not vim.g.vscode then
 	end
 	vim.opt.rtp:prepend(lazypath)
 
-	require("lazy").setup("plugin", {
+	require("lazy").setup({ { import = "plugin" }, { import = "plugin.lsp" } }, {
 		change_detection = { enabled = false },
 		checker = { enabled = false },
 		defaults = { lazy = true, version = false },
