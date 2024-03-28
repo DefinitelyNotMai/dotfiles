@@ -9,9 +9,7 @@ return {
 			silent = true,
 		},
 	},
-	ft = {
-		"markdown",
-	},
+	ft = "markdown",
 	build = function()
 		vim.fn["mkdp#util#install"]()
 	end,
