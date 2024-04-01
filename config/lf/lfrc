@@ -1,4 +1,5 @@
 set drawbox
+set hidden
 set previewer ~/.config/lf/previewer.sh
 
 cmd compress ${{
