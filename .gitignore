@@ -1,3 +1,4 @@
+# ignore these files
 config/ncmpcpp/error.log
 config/nvim/lazy-lock.json
 config/shell/zsh/.zcompdump
@@ -7,3 +8,8 @@ config/transmission-daemon/torrents/
 config/transmission-daemon/bandwidth-groups.json
 config/transmission-daemon/dht.dat
 config/transmission-daemon/stats.json
+config/VSCodium/*
+
+# don't ignore
+!config/VSCodium/User/keybindings.json
+!config/VSCodium/User/settings.json
