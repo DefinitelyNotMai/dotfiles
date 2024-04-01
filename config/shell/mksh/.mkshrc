@@ -11,7 +11,7 @@ esac
 HISTFILE="$XDG_DATA_HOME"/shell-history/"$(date +%Y-%m-%d)"
 
 # prompt
-PS1=$'\033[0;34m\033[1m$(basename $(pwd)) \033[0;$([ "$?" = 0 ] && echo "33m" || echo "31m")$ \033[0m'
+PS1=$'\033[0;34m\033[1m$(basename "$(pwd)") \033[0;$([ "$?" = 0 ] && echo "33m" || echo "31m")$ \033[0m'
 
 # vi-mode
 set -o vi
