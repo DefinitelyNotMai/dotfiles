@@ -19,7 +19,7 @@ return {
 		}
 
 		vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
-			group = vim.api.nvim_create_augroup("linting"),
+			group = vim.api.nvim_create_augroup("linting", { clear = true }),
 			callback = function()
 				require("lint").try_lint()
 			end,
