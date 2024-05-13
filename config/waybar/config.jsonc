@@ -2,37 +2,20 @@
   "layer": "top",
   "position": "top",
   "spacing": 0,
-  "modules-left": [
-    "hyprland/workspaces"
-  ],
-  "modules-center": [
-    "hyprland/window"
-  ],
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["hyprland/window"],
   "modules-right": [
     "temperature",
-    "custom/separator",
     "pulseaudio",
-    "custom/separator",
-    "backlight",
-    "custom/separator",
     "network",
-    "custom/separator",
     "battery",
-    "custom/separator",
     "clock"
   ],
   "hyprland/workspaces": {
-    "format": " {name} ",
+    "format": "{name}",
     "persistent-workspaces": {
       "*": 9
     }
-  },
-  "custom/separator": {
-    "format": " ",
-    "interval": "once"
-  },
-  "hyprland/window": {
-    "format": "{}"
   },
   "temperature": {
     "format": " {temperatureC}",
@@ -40,30 +23,25 @@
     "tooltip": false
   },
   "pulseaudio": {
-    "format": "{volume}",
-    "format-muted": "Muted",
-    "tooltip": false
-  },
-  "backlight": {
-    "format": "{percent}",
-    "interval": 30,
+    "format": " {volume}",
+    "format-muted": "M",
     "tooltip": false
   },
   "network": {
-    "format-wifi": "1",
-    "format-ethernet": "1",
-    "format-disconnected": "0",
+    "format-wifi": " 1",
+    "format-ethernet": " 1",
+    "format-disconnected": " 0",
     "interval": 30,
     "tooltip": false
   },
   "battery": {
     "bat": "BAT0",
     "interval": 30,
-    "format": "{capacity}",
+    "format": " {capacity}",
     "tooltip": false
   },
   "clock": {
-    "format": "{:%Y-%m-%d %H:%M:%OS} ",
+    "format": " {:%Y-%m-%d %H:%M:%OS} ",
     "interval": 1,
     "tooltip": false
   }
