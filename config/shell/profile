@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export PATH="$PATH":"$HOME"/.local/bin:"$HOME"/.local/share/npm/bin:"$HOME"/.local/share/cargo/bin:"$HOME"/.local/share/go/bin
+export PATH="$PATH":"$HOME"/.local/bin:"$HOME"/.local/share/npm/bin:"$HOME"/.local/share/cargo/bin:"$HOME"/.local/share/go/bin:"$HOME"/.local/share/bun/bin:"$HOME"/.local/share/pnpm
 
 # default apps
 export BROWSER="firefox"
@@ -18,6 +18,7 @@ export XDG_SESSION_DESKTOP="Hyprland"
 export XDG_SESSION_TYPE="wayland"
 
 # home cleanup
+export BUN_INSTALL="$XDG_DATA_HOME"/bun
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export GOPATH="$XDG_DATA_HOME"/go
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
@@ -40,6 +41,7 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 
 # other
+export RUSTC_WRAPPER="$CARGO_HOME"/bin/sccache
 export SUDO_ASKPASS="$HOME/.local/bin/tofi-pass"
 
 [ "$(tty)" = "/dev/tty1" ] && exec Hyprland > ~/.hyprland.log
