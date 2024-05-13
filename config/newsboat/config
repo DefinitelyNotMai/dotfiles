@@ -1,14 +1,21 @@
 refresh-on-startup yes
 
 # color
-color article color15 default
+color article default default
 color background default default
 color info color15 color0
 
-color listnormal color8 default
-color listnormal_unread color15 default
+color listnormal color15 default
+color listnormal_unread color0 default
 color listfocus color4 default
 color listfocus_unread color4 default
+
+highlight article "^(Feed|Title|Author|Link|Date): .+" color4 default bold
+highlight article "^(Feed|Title|Author|Link|Date):" color14 default bold
+
+highlight article "\\((link|image|video)\\)" color8 default
+highlight article "https?://[^ ]+" color4 default bold
+highlight article "\[[0-9]+\]" color6 default bold
 
 # keybinds
 unbind-key UP
@@ -22,10 +29,3 @@ bind-key l open
 
 bind-key H prev-feed
 bind-key L next-feed
-
-highlight article "^(Feed|Title|Author|Link|Date): .+" color4 default
-highlight article "^(Feed|Title|Author|Link|Date):" color14 default bold
-
-highlight article "\\((link|image|video)\\)" color8 default
-highlight article "https?://[^ ]+" color4 default bold
-highlight article "\[[0-9]+\]" color6 default bold

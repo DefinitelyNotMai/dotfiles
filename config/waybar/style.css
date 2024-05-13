@@ -4,23 +4,23 @@
 }
 
 #waybar {
-  background-color: #15161e;
-  border-bottom: 2px solid #a9b1d6;
-  color: #c0caf5;
+  background-color: #1e1e2e;
+  border-bottom: 1px solid #89b4fa;
 }
 
 #workspaces button {
-  padding: 0.5rem 0;
+  color: #ffffff;
+  padding: 0.5rem;
 }
 
 #workspaces button.empty {
-  color: #444444;
+  color: #585b70;
 }
 
 #workspaces button.active {
-  color: #7aa2f7;
+  color: #89b4fa;
 }
 
 #workspaces button.urgent {
-  color: #f7768e;
+  color: #ff0000;
 }

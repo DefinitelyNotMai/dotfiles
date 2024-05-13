@@ -3,9 +3,9 @@ font = "/usr/share/fonts/TTF/DejaVuSansMono.ttf"
 font-size = 9
 
 # text theming
-text-color = #444444
-selection-color = #c0caf5
-selection-match-color = #7aa2f7
+text-color = #cdd6f4
+selection-color = #f9e2af
+selection-match-color = #89b4fa
 
 # text layout
 horizontal = true
@@ -16,7 +16,7 @@ num-results = 5
 # window theming
 width = 100%
 height = 25
-background-color = #15161e
+background-color = #1e1e2e
 border-width = 0
 outline-width = 0
 padding-top = 6
