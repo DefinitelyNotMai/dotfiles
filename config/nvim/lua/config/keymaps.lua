@@ -1,76 +1,130 @@
-local opts = { noremap = true, silent = true }
-vim.g.mapleader = " "
+-- buffer {{{
+vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", {
+	desc = "Go to previous buffer.",
+	noremap = true,
+	silent = true,
+})
 
--- buffer
-opts.desc = "Go to previous buffer."
-vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", opts)
+vim.keymap.set("n", "]b", "<cmd>bnext<cr>", {
+	desc = "Go to next buffer.",
+	noremap = true,
+	silent = true,
+})
 
-opts.desc = "Go to next buffer"
-vim.keymap.set("n", "]b", "<cmd>bnext<cr>", opts)
+vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<cr>", {
+	desc = "Delete current buffer.",
+	noremap = true,
+	silent = true,
+})
+-- }}}
 
-opts.desc = "Delete current buffer."
-vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<cr>", opts)
+-- quickfix {{{
+vim.keymap.set("n", "[c", "<cmd>cprevious<cr>", {
+	desc = "Go to previous quickfix item.",
+	noremap = true,
+	silent = true,
+})
 
--- quickfix
-opts.desc = "Go to previous quickfix item."
-vim.keymap.set("n", "[c", "<cmd>cprevious<cr>", opts)
+vim.keymap.set("n", "]c", "<cmd>cnext<cr>", {
+	desc = "Go to next quickfix item.",
+	noremap = true,
+	silent = true,
+})
 
-opts.desc = "Go to next quickfix item."
-vim.keymap.set("n", "]c", "<cmd>cnext<cr>", opts)
+vim.keymap.set("n", "<leader>co", "<cmd>copen<cr>", {
+	desc = "Open quickfix window.",
+	noremap = true,
+	silent = true,
+})
+-- }}}
 
-opts.desc = "Open quickfix window."
-vim.keymap.set("n", "<leader>co", "<cmd>copen<cr>", opts)
+-- text manipulation {{{
+vim.keymap.set("n", "x", '"_x', {
+	desc = "Delete character into void register.",
+	noremap = true,
+	silent = true,
+})
 
--- text manipulation
-opts.desc = "Delete character into void register."
-vim.keymap.set("n", "x", '"_x', opts)
+vim.keymap.set("n", "<S-j>", "mzJ`z", {
+	desc = "Concatenate with line below.",
+	noremap = true,
+	silent = true,
+})
 
-opts.desc = "Concatenate with line below."
-vim.keymap.set("n", "<S-j>", "mzJ`z", opts)
+vim.keymap.set("v", "<S-j>", ":m '>+1<cr>gv=gv", {
+	desc = "Move selection down and autoindent.",
+	noremap = true,
+	silent = true,
+})
 
-opts.desc = "Move selection down and autoindent."
-vim.keymap.set("v", "<S-j>", ":m '>+1<cr>gv=gv", opts)
+vim.keymap.set("v", "<S-k>", ":m '<-2<cr>gv=gv", {
+	desc = "Move selection up and autoindent.",
+	noremap = true,
+	silent = true,
+})
 
-opts.desc = "Move selection up and autoindent."
-vim.keymap.set("v", "<S-k>", ":m '<-2<cr>gv=gv", opts)
+vim.keymap.set("v", "<leader>y", '"+y', {
+	desc = "Yank selected text to system clipboard.",
+	noremap = true,
+	silent = true,
+})
 
-opts.desc = "Decrease indent."
-vim.keymap.set("v", "<", "<gv", opts)
+vim.keymap.set("n", "<leader>p", '"+p', {
+	desc = "Paste after cursor from system clipboard.",
+	noremap = true,
+	silent = true,
+})
 
-opts.desc = "Increase indent."
-vim.keymap.set("v", ">", ">gv", opts)
+vim.keymap.set("n", "<leader><S-p>", '"+<S-p>', {
+	desc = "Paste before cursor from system clipboard.",
+	noremap = true,
+	silent = true,
+})
 
-opts.desc = "Yank selected text to system clipboard."
-vim.keymap.set("v", "<leader>y", '"+y', opts)
+vim.keymap.set("n", "<S-s>", ":%s/", {
+	desc = "Search and replace.",
+	noremap = true,
+	silent = true,
+})
+-- }}}
 
-opts.desc = "Paste from system clipboard."
-vim.keymap.set("n", "<leader>p", '"+p', opts)
+-- navigation {{{
+vim.keymap.set("n", "<C-d>", "<C-d>zz", {
+	desc = "Half page down and center screen.",
+	noremap = true,
+	silent = true,
+})
 
-opts.desc = "Paste before cursor from system clipboard."
-vim.keymap.set("n", "<leader><S-p>", '"+P', opts)
+vim.keymap.set("n", "<C-u>", "<C-u>zz", {
+	desc = "Half page up and center screen.",
+	noremap = true,
+	silent = true,
+})
 
--- navigation and center
-opts.desc = "Half page down and center screen."
-vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
+vim.keymap.set("n", "n", "nzzzv", {
+	desc = "Move to next search result and center screen.",
+	noremap = true,
+	silent = true,
+})
 
-opts.desc = "Half page up and center screen."
-vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
+vim.keymap.set("n", "<S-n>", "<S-n>zzzv", {
+	desc = "Move to previous search result and center screen.",
+	noremap = true,
+	silent = true,
+})
 
-opts.desc = "Move to next search result and center screen."
-vim.keymap.set("n", "n", "nzzzv", opts)
+-- }}}
 
-opts.desc = "Move to previous search result and center screen."
-vim.keymap.set("n", "N", "Nzzzv", opts)
+-- other {{{
+vim.keymap.set("n", "<leader>e", "<cmd>Explore<cr>", {
+	desc = "Open NetRW.",
+	noremap = true,
+	silent = true,
+})
 
--- other
-opts.desc = "Toggle spellcheck."
-vim.keymap.set("n", "<leader><S-s>", "<cmd>lua vim.o.spell = not vim.o.spell<cr>", opts)
-
-opts.desc = "Open NetRW."
-vim.keymap.set("n", "<leader>e", "<cmd>Explore<cr>", opts)
-
-opts.desc = "Insert error-checking template (for golang)."
-vim.keymap.set("n", "<leader>xg", "oif err != nil {<cr>}<esc>Oreturn err<esc>", opts)
-
-opts.desc = "Search and replace."
-vim.keymap.set("n", "<S-s>", ":%s/", opts)
+vim.keymap.set("n", "<leader><S-s>", "<cmd>lua vim.o.spell = not vim.o.spell<cr>", {
+	desc = "Toggle spellcheck.",
+	noremap = true,
+	silent = true,
+})
+-- }}}

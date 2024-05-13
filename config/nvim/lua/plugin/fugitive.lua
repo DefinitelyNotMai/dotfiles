@@ -1,4 +1,6 @@
-return {
+local M = {}
+
+M.plugin = {
 	"tpope/vim-fugitive",
 	keys = {
 		{
@@ -10,3 +12,5 @@ return {
 		},
 	},
 }
+
+return M.plugin

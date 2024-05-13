@@ -1,9 +1,10 @@
-return {
+local M = {}
+
+M.plugin = {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
 	dependencies = {
 		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
 		"L3MON4D3/LuaSnip",
 		"rafamadriz/friendly-snippets",
@@ -13,7 +14,7 @@ return {
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 
-		-- add snippets for js, jsx, ts, and tsx files
+		-- additional snippets for js, jsx, ts, and tsx files
 		luasnip.filetype_extend("javascript", { "jsdoc" })
 		luasnip.filetype_extend("javascriptreact", { "html", "jsdoc", "react-es7" })
 		luasnip.filetype_extend("typescript", { "tsdoc" })
@@ -21,18 +22,6 @@ return {
 		require("luasnip.loaders.from_vscode").lazy_load()
 
 		cmp.setup({
-			formatting = {
-				fields = { "menu", "abbr", "kind" },
-				format = function(entry, vim_item)
-					vim_item.menu = ({
-						buffer = "[BUF]",
-						luasnip = "[SNIP]",
-						nvim_lsp = "[LSP]",
-						path = "[PATH]",
-					})[entry.source.name]
-					return vim_item
-				end,
-			},
 			mapping = cmp.mapping.preset.insert({
 				["<C-b>"] = cmp.mapping.scroll_docs(-4),
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -50,10 +39,28 @@ return {
 				{ name = "buffer" },
 				{ name = "path" },
 			}),
+			formatting = {
+				fields = { "menu", "abbr", "kind" },
+				format = function(entry, item)
+					item.menu = ({
+						buffer = "[BUF]",
+						luasnip = "[SNIP]",
+						nvim_lsp = "[LSP]",
+						path = "[PATH]",
+					})[entry.source.name]
+					return item
+				end,
+			},
 			window = {
-				completion = { border = "none" },
-				documentation = { border = "none" },
+				completion = {
+					border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
+				},
+				documentation = {
+					border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+				},
 			},
 		})
 	end,
 }
+
+return M.plugin

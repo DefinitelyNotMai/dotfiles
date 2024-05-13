@@ -1,16 +1,33 @@
+-- global variables {{{
+-- leader key
+vim.g.mapleader = " "
+
 -- netrw
 vim.g.netrw_banner = 0
-vim.g.netrw_browse_split = 0
 
--- run ":h <option>" for more information.
--- ":h colorcolumn"
+-- runtime plugins
+vim.g.loaded_gzip = 1
+vim.g.loaded_matchit = 1
+vim.g.loaded_matchparen = 1
+vim.g.loaded_spellfile_plugin = 1
+vim.g.loaded_tarPlugin = 1
+vim.g.loaded_2html_plugin = 1
+vim.g.loaded_tutor_mode_plugin = 1
+vim.g.loaded_zipPlugin = 1
+-- }}}
+
+-- vim options {{{
+-- run `:h <option>` for more information.
+-- `:h colorcolumn`
 vim.o.colorcolumn = "80,100,120"
-vim.o.completeopt = "menu,menuone,noinsert,noselect"
+vim.o.completeopt = "menu,menuone,noselect"
 vim.o.confirm = true
+vim.o.foldmethod = "marker"
 vim.o.formatoptions = "jcroqlnt"
 vim.o.grepformat = "%f:%l:%c:%m"
 vim.o.grepprg = "rg --vimgrep"
 vim.o.guicursor = ""
+vim.o.inccommand = "nosplit"
 vim.o.iskeyword = vim.o.iskeyword .. ",-"
 vim.o.laststatus = 3
 vim.o.list = true
@@ -35,16 +52,33 @@ vim.o.undodir = vim.fn.stdpath("data") .. "/undodir"
 vim.o.undofile = true
 vim.o.wildignore = "*/node_modules/*"
 vim.o.wrap = false
+-- }}}
 
--- disabled runtime plugins
-vim.g.loaded_gzip = 1
-vim.g.loaded_matchit = 1
-vim.g.loaded_matchparen = 1
-vim.g.loaded_spellfile_plugin = 1
-vim.g.loaded_tarPlugin = 1
-vim.g.loaded_2html_plugin = 1
-vim.g.loaded_tutor_mode_plugin = 1
-vim.g.loaded_zipPlugin = 1
+-- statusline {{{
+_G.cmp = {}
 
--- disable recommended style
-vim.g.python_recommended_style = 0
+_G.cmp.diagnostics = function()
+	return table.concat({
+		"E:" .. #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR }),
+		"W:" .. #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN }),
+		"I:" .. #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO }),
+		"H:" .. #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HELP }),
+	}, " ")
+end
+
+_G.cmp.file_info = function()
+	return table.concat({
+		vim.bo.fileencoding,
+		vim.bo.fileformat,
+		vim.bo.filetype,
+	}, " ")
+end
+
+vim.o.statusline = table.concat({
+	" %t%m%r%h%w",
+	"%{%v:lua.cmp.diagnostics()%}",
+	"%=",
+	"%{%v:lua.cmp.file_info()%}",
+	"%v:%l ",
+}, " | ")
+-- }}}
