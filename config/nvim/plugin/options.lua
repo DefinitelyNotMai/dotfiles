@@ -1,7 +1,4 @@
 -- global variables {{{
--- leader key
-vim.g.mapleader = " "
-
 -- netrw
 vim.g.netrw_banner = 0
 
@@ -9,6 +6,8 @@ vim.g.netrw_banner = 0
 vim.g.loaded_gzip = 1
 vim.g.loaded_matchit = 1
 vim.g.loaded_matchparen = 1
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_spellfile_plugin = 1
 vim.g.loaded_tarPlugin = 1
 vim.g.loaded_2html_plugin = 1
@@ -22,6 +21,8 @@ vim.g.loaded_zipPlugin = 1
 vim.o.colorcolumn = "80,100,120"
 vim.o.completeopt = "menu,menuone,noselect"
 vim.o.confirm = true
+vim.o.encoding = "utf-8"
+vim.o.fileencoding = "utf-8"
 vim.o.foldmethod = "marker"
 vim.o.formatoptions = "jcroqlnt"
 vim.o.grepformat = "%f:%l:%c:%m"
@@ -66,19 +67,10 @@ _G.cmp.diagnostics = function()
 	}, " ")
 end
 
-_G.cmp.file_info = function()
-	return table.concat({
-		vim.bo.fileencoding,
-		vim.bo.fileformat,
-		vim.bo.filetype,
-	}, " ")
-end
-
 vim.o.statusline = table.concat({
 	" %t%m%r%h%w",
 	"%{%v:lua.cmp.diagnostics()%}",
 	"%=",
-	"%{%v:lua.cmp.file_info()%}",
 	"%v:%l ",
 }, " | ")
 -- }}}

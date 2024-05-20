@@ -1,17 +1,17 @@
 -- buffer {{{
-vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", {
+vim.keymap.set("n", "[b", "<CMD>bprevious<CR>", {
 	desc = "Go to previous buffer.",
 	noremap = true,
 	silent = true,
 })
 
-vim.keymap.set("n", "]b", "<cmd>bnext<cr>", {
+vim.keymap.set("n", "]b", "<CMD>bnext<CR>", {
 	desc = "Go to next buffer.",
 	noremap = true,
 	silent = true,
 })
 
-vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<cr>", {
+vim.keymap.set("n", "<LEADER>bd", "<CMD>bdelete<CR>", {
 	desc = "Delete current buffer.",
 	noremap = true,
 	silent = true,
@@ -19,19 +19,19 @@ vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<cr>", {
 -- }}}
 
 -- quickfix {{{
-vim.keymap.set("n", "[c", "<cmd>cprevious<cr>", {
+vim.keymap.set("n", "[c", "<CMD>cprevious<CR>", {
 	desc = "Go to previous quickfix item.",
 	noremap = true,
 	silent = true,
 })
 
-vim.keymap.set("n", "]c", "<cmd>cnext<cr>", {
+vim.keymap.set("n", "]c", "<CMD>cnext<CR>", {
 	desc = "Go to next quickfix item.",
 	noremap = true,
 	silent = true,
 })
 
-vim.keymap.set("n", "<leader>co", "<cmd>copen<cr>", {
+vim.keymap.set("n", "<LEADER>co", "<CMD>copen<CR>", {
 	desc = "Open quickfix window.",
 	noremap = true,
 	silent = true,
@@ -51,31 +51,31 @@ vim.keymap.set("n", "<S-j>", "mzJ`z", {
 	silent = true,
 })
 
-vim.keymap.set("v", "<S-j>", ":m '>+1<cr>gv=gv", {
+vim.keymap.set("v", "<S-j>", ":m '>+1<CR>gv=gv", {
 	desc = "Move selection down and autoindent.",
 	noremap = true,
 	silent = true,
 })
 
-vim.keymap.set("v", "<S-k>", ":m '<-2<cr>gv=gv", {
+vim.keymap.set("v", "<S-k>", ":m '<-2<CR>gv=gv", {
 	desc = "Move selection up and autoindent.",
 	noremap = true,
 	silent = true,
 })
 
-vim.keymap.set("v", "<leader>y", '"+y', {
+vim.keymap.set("v", "<LEADER>y", '"+y', {
 	desc = "Yank selected text to system clipboard.",
 	noremap = true,
 	silent = true,
 })
 
-vim.keymap.set("n", "<leader>p", '"+p', {
+vim.keymap.set("n", "<LEADER>p", '"+p', {
 	desc = "Paste after cursor from system clipboard.",
 	noremap = true,
 	silent = true,
 })
 
-vim.keymap.set("n", "<leader><S-p>", '"+<S-p>', {
+vim.keymap.set("n", "<LEADER><S-p>", '"+<S-p>', {
 	desc = "Paste before cursor from system clipboard.",
 	noremap = true,
 	silent = true,
@@ -112,17 +112,10 @@ vim.keymap.set("n", "<S-n>", "<S-n>zzzv", {
 	noremap = true,
 	silent = true,
 })
-
 -- }}}
 
 -- other {{{
-vim.keymap.set("n", "<leader>e", "<cmd>Explore<cr>", {
-	desc = "Open NetRW.",
-	noremap = true,
-	silent = true,
-})
-
-vim.keymap.set("n", "<leader><S-s>", "<cmd>lua vim.o.spell = not vim.o.spell<cr>", {
+vim.keymap.set("n", "<LEADER>s", "<CMD>lua vim.o.spell = not vim.o.spell<CR>", {
 	desc = "Toggle spellcheck.",
 	noremap = true,
 	silent = true,

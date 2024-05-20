@@ -1,12 +1,14 @@
-local M = {}
-
-M.plugin = {
+return {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
 	dependencies = {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
-		"L3MON4D3/LuaSnip",
+		{
+			"L3MON4D3/LuaSnip",
+			version = "v2.*", -- follow latest release
+			build = "make install_jsregexp", -- install jsregexp
+		},
 		"rafamadriz/friendly-snippets",
 		"saadparwaiz1/cmp_luasnip",
 	},
@@ -62,5 +64,3 @@ M.plugin = {
 		})
 	end,
 }
-
-return M.plugin

@@ -1,6 +1,4 @@
-local M = {}
-
-M.plugin = {
+return {
 	"iamcco/markdown-preview.nvim",
 	keys = {
 		{
@@ -16,5 +14,3 @@ M.plugin = {
 		vim.fn["mkdp#util#install"]()
 	end,
 }
-
-return M.plugin

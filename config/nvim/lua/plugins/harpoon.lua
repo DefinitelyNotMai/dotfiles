@@ -1,6 +1,4 @@
-local M = {}
-
-M.plugin = {
+return {
 	"ThePrimeagen/harpoon",
 	branch = "harpoon2",
 	dependencies = "nvim-lua/plenary.nvim",
@@ -19,6 +17,7 @@ M.plugin = {
 			function()
 				require("harpoon").ui:toggle_quick_menu(require("harpoon"):list(), {
 					border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
+					title = "",
 				})
 			end,
 			desc = "Mark file with harpoon.",
@@ -62,14 +61,12 @@ M.plugin = {
 			silent = true,
 		},
 	},
-	opts = {
-		settings = {
-			save_on_toggle = true,
-		},
-	},
-	config = function(_, opts)
-		require("harpoon"):setup(opts)
+	config = function()
+		require("harpoon"):setup({
+			highlight_groups = {
+				window = "HarpoonWindow",
+			},
+			settings = { save_on_toggle = true },
+		})
 	end,
 }
-
-return M.plugin
