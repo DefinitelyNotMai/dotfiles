@@ -1,82 +1,157 @@
 {
-  "[markdown]": {
-    "files.trimTrailingWhitespace": false
-  },
+  /* behavior */
+  "editor.codeActionsOnSave": { "source.organizeImports": "explicit" },
+  "editor.linkedEditing": true,
+  "files.trimTrailingWhitespace": true,
+  "keyboard.dispatch": "keyCode",
+
+  /* emmet */
+  "emmet.excludeLanguages": [],
+  "emmet.includeLanguages": { "markdown": "html" },
+
+  /* looks */
   "breadcrumbs.enabled": false,
-  "editor.bracketPairColorization.enabled": true,
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit"
-  },
+  "editor.bracketPairColorization.enabled": false,
   "editor.cursorBlinking": "solid",
   "editor.cursorStyle": "block",
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.fontFamily": "Iosevka Fixed Slab",
+  "editor.fontFamily": "Maple Mono",
+  "editor.fontLigatures": false,
   "editor.fontSize": 14,
-  "editor.formatOnSave": true,
-  "editor.linkedEditing": true,
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
   "editor.rulers": [80, 100, 120],
-  "files.trimTrailingWhitespace": true,
-  "javascript.suggest.autoImports": true,
-  "javascript.updateImportsOnFileMove.enabled": "prompt",
-  "keyboard.dispatch": "keyCode",
+  "editor.scrollBeyondLastLine": false,
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.tabSize": 4,
+  "window.density.editorTabHeight": "compact",
+  "window.menuBarVisibility": "toggle",
+  "window.zoomLevel": 0.25,
+  "workbench.activityBar.location": "top",
+  "workbench.colorTheme": "Visual Studio Dark",
+  "workbench.startupEditor": "none",
+  "workbench.tree.indent": 16,
+  "workbench.tree.renderIndentGuides": "always",
+
+  /* filetype specific */
+  "[markdown]": { "files.trimTrailingWhitespace": false },
+
+  /* formatter */
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "prettier.arrowParens": "always",
+  "prettier.bracketSameLine": false,
+  "prettier.bracketSpacing": true,
+  "prettier.endOfLine": "lf",
+  "prettier.jsxSingleQuote": false,
+  "prettier.printWidth": 80,
+  "prettier.semi": true,
+  "prettier.singleQuote": false,
+  "prettier.tabWidth": 2,
+  "prettier.trailingComma": "all",
+  "prettier.useTabs": false,
+
+  /* search exclude */
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,
     "**/*.code-search": true
   },
-  "typescript.suggest.autoImports": true,
-  "typescript.updateImportsOnFileMove.enabled": "prompt",
-  //
-  "vim.leader": "<Space>",
+
+  /* vim */
+  "extensions.experimental.affinity": { "vscodevim.vim": 1 },
+  "vim.leader": "<SPACE>",
+  "vim.highlightedyank.enable": true,
   "vim.normalModeKeyBindingsNonRecursive": [
-    // buffer
+    // buffer controls
     { "before": ["[", "b"], "commands": [":bprevious"] },
     { "before": ["]", "b"], "commands": [":bnext"] },
-    { "before": ["leader", "b", "d"], "commands": [":bdelete"] },
+    { "before": ["LEADER", "b", "d"], "commands": [":bdelete"] },
+    // comment
+    { "before": ["g", "c", "c"], "commands": ["editor.action.commentLine"] },
+    // diagnostics
+    { "before": ["[", "d"], "commands": ["editor.action.marker.prev"] },
+    { "before": ["]", "d"], "commands": ["editor.action.marker.next"] },
+    // explorer
+    {
+      "before": ["LEADER", "e"],
+      "commands": ["workbench.files.action.focusFilesExplorer"]
+    },
     // find
     {
-      "before": ["leader", "f", "f"],
+      "before": ["LEADER", "f", "b"],
+      "commands": ["workbench.action.showAllEditors"]
+    },
+    {
+      "before": ["LEADER", "f", "f"],
       "commands": ["workbench.action.quickOpen"]
     },
     {
-      "before": ["leader", "f", "g"],
+      "before": ["LEADER", "f", "g"],
       "commands": ["workbench.action.findInFiles"]
     },
     // lsp
     {
-      "before": ["leader", "c", "a"],
+      "before": ["LEADER", "c", "a"],
       "commands": ["editor.action.codeAction"]
     },
     {
-      "before": ["leader", "g", "d"],
+      "before": ["LEADER", "g", "d"],
       "commands": ["editor.action.revealDefinition"]
     },
     {
-      "before": ["leader", "g", "<S-d>"],
+      "before": ["LEADER", "g", "<S-d>"],
       "commands": ["editor.action.goToDeclaration"]
     },
     {
-      "before": ["leader", "g", "i"],
+      "before": ["LEADER", "g", "i"],
       "commands": ["editor.action.goToImplementation"]
     },
     {
-      "before": ["leader", "g", "t"],
+      "before": ["LEADER", "g", "t"],
       "commands": ["editor.action.goToTypeDefinition"]
+    },
+    {
+      "before": ["LEADER", "r", "n"],
+      "commands": ["editor.action.rename"]
+    },
+    {
+      "before": ["<S-k>"],
+      "commands": ["editor.action.showHover"]
+    },
+    // paste
+    {
+      "before": ["LEADER", "p"],
+      "commands": ["editor.action.clipboardPasteAction"]
     }
   ],
-  "vim.visualModeKeyBindings": [
+  "vim.visualModeKeyBindingsNonRecursive": [
+    // comment
+    { "before": ["g", "c"], "commands": ["editor.action.commentLine"] },
+    // horizontal
     { "before": ["<"], "commands": ["editor.action.outdentLines"] },
     { "before": [">"], "commands": ["editor.action.indentLines"] },
+    // vertical
     { "before": ["<S-j>"], "commands": ["editor.action.moveLinesDownAction"] },
     { "before": ["<S-k>"], "commands": ["editor.action.moveLinesUpAction"] },
-    { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] }
+    // yank
+    {
+      "before": ["LEADER", "y"],
+      "commands": ["editor.action.clipboardCopyAction"]
+    }
   ],
-  //
-  "window.zoomLevel": 0.25,
-  "workbench.colorTheme": "Visual Studio Dark",
-  "workbench.tree.indent": 16,
-  "zenMode.hideLineNumbers": false,
-  "window.menuBarVisibility": "toggle"
+
+  /* web development */
+  "html.autoClosingTags": true,
+  "javascript.autoClosingTags": true,
+  "javascript.preferences.renameMatchingJsxTags": true,
+  "javascript.suggest.autoImports": true,
+  "javascript.updateImportsOnFileMove.enabled": "prompt",
+  "typescript.autoClosingTags": true,
+  "typescript.preferences.renameMatchingJsxTags": true,
+  "typescript.suggest.autoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "prompt",
+
+  /* zen */
+  "zenMode.hideLineNumbers": false
 }

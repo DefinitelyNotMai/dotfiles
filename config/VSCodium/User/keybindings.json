@@ -1,48 +1,54 @@
 // Place your key bindings in this file to override the defaults
 [
-  // toggle
+  /* toggle bar */
   {
-    "key": "ctrl+b",
-    "command": "workbench.action.toggleSidebarVisibility"
+    "command": "workbench.action.toggleSidebarVisibility",
+    "key": "ctrl+b"
+  },
+  /* explorer */
+  {
+    "command": "workbench.action.focusActiveEditorGroup",
+    "key": "space e",
+    "when": "explorerViewletFocus"
   },
   {
-    "key": "ctrl+alt+b",
-    "command": "workbench.action.toggleActivityBarVisibility"
-  },
-  // explorer
-  {
-    "key": "ctrl+e",
-    "when": "editorTextFocus",
-    "command": "workbench.files.action.focusFilesExplorer"
-  },
-  {
-    "key": "ctrl+e",
-    "when": "explorerViewletFocus",
-    "command": "workbench.action.focusActiveEditorGroup"
-  },
-  {
+    "command": "explorer.newFile",
     "key": "shift+5",
-    "when": "explorerViewletFocus",
-    "command": "explorer.newFile"
+    "when": "filesExplorerFocus && !inputFocus"
   },
   {
+    "command": "explorer.newFolder",
     "key": "d",
-    "when": "filesExplorerFocus && !inputFocus",
-    "command": "explorer.newFolder"
+    "when": "filesExplorerFocus && !inputFocus"
   },
   {
+    "command": "filesExplorer.copy",
+    "key": "y",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "command": "filesExplorer.cut",
+    "key": "x",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "command": "filesExplorer.paste",
+    "key": "p",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "command": "deleteFile",
     "key": "shift+d",
-    "when": "filesExplorerFocus && !inputFocus",
-    "command": "deleteFile"
+    "when": "filesExplorerFocus && !inputFocus"
   },
   {
+    "command": "renameFile",
     "key": "r",
-    "when": "filesExplorerFocus && !inputFocus",
-    "command": "renameFile"
+    "when": "filesExplorerFocus && !inputFocus"
   },
-  // zen
+  /* zen */
   {
-    "key": "ctrl+z",
-    "command": "workbench.action.toggleZenMode"
+    "command": "workbench.action.toggleZenMode",
+    "key": "ctrl+z"
   }
 ]
