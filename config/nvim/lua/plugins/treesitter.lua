@@ -1,71 +1,54 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	event = { "BufReadPre", "BufNewFile" },
+	event = { "BufNewFile", "BufReadPre" },
 	dependencies = {
-		"windwp/nvim-ts-autotag",
-		{
-			"nvim-treesitter/nvim-treesitter-context",
-			config = function()
-				require("treesitter-context").setup({ max_lines = 1 })
-			end,
-		},
+		{ "nvim-treesitter/nvim-treesitter-context", opts = { max_lines = 3 } },
+		{ "windwp/nvim-ts-autotag", config = true },
 	},
 	build = ":TSUpdate",
 	keys = {
-		{
-			"<leader>gc",
-			function()
-				require("treesitter-context").go_to_context()
-			end,
-			desc = "Go to context.",
-			noremap = true,
-			silent = true,
-		},
 		{
 			"<leader>tp",
 			function()
 				vim.treesitter.inspect_tree()
 			end,
 			desc = "Toggle InspectTree.",
-			noremap = true,
-			silent = true,
+		},
+		{
+			"<leader>gc",
+			function()
+				require("treesitter-context").go_to_context()
+			end,
+			desc = "Go to context.",
 		},
 	},
 	config = function()
 		require("nvim-treesitter.configs").setup({
-			autotag = { enable = true },
 			ensure_installed = {
-				"angular",
-				"astro",
-				"bash",
+				-- essential
 				"c",
+				"lua",
+				"query",
+				"vim",
+				"vimdoc",
+				-- for me
+				"bash",
 				"css",
 				"dockerfile",
-				"gitignore",
 				"go",
 				"html",
 				"javascript",
 				"json",
-				"lua",
 				"markdown",
 				"markdown_inline",
 				"python",
-				"query",
+				"rust",
 				"svelte",
+				"templ",
 				"tsx",
 				"typescript",
-				"vimdoc",
 			},
 			highlight = { enable = true },
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = "<C-Space>",
-					node_incremental = "<C-Space>",
-					scope_incremental = false,
-					node_decremental = "<BS>",
-				},
-			},
 		})
 	end,
 }

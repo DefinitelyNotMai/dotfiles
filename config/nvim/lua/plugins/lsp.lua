@@ -1,5 +1,5 @@
 return {
-	-- lspconfig {{{
+	-- neovim/nvim-lspconfig {{{
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -8,14 +8,15 @@ return {
 			"stevearc/conform.nvim",
 			"mfussenegger/nvim-lint",
 		},
-		event = { "BufReadPre", "BufNewFile" },
+		event = { "BufNewFile", "BufReadPre" },
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local lspconfig = require("lspconfig")
 			local servers = {
-				"angularls",
 				"bashls",
 				"clangd",
 				"cssls",
+				"eslint",
 				"dockerls",
 				"gopls",
 				"html",
@@ -29,18 +30,14 @@ return {
 				"templ",
 				"tsserver",
 			}
-			local lspconfig = require("lspconfig")
 
 			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-				border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
+				border = { " " },
 			})
 
-			for _, lsp in pairs(servers) do
+			for _, lsp in ipairs(servers) do
 				lspconfig[lsp].setup({
 					capabilities = capabilities,
-					flags = {
-						debounce_text_changes = 150,
-					},
 				})
 			end
 
@@ -52,9 +49,7 @@ return {
 							globals = { "vim" },
 						},
 						runtime = { "LuaJIT" },
-						workspace = {
-							checkThirdParty = false,
-						},
+						workspace = { checkThirdParty = false },
 					},
 				},
 			})
@@ -64,6 +59,7 @@ return {
 				---@diagnostic disable-next-line: unused-local
 				on_attach = function(client, bufnr)
 					vim.api.nvim_create_autocmd("BufWritePost", {
+						group = vim.api.nvim_create_autocmd("svelte", { clear = true }),
 						callback = function(ctx)
 							client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
 						end,
@@ -75,126 +71,50 @@ return {
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("lsp", { clear = true }),
 				callback = function(e)
-					vim.keymap.set("n", "<LEADER>d", "<CMD>lua vim.diagnostic.open_float()<CR>", {
-						buffer = e.buf,
-						desc = "Show current line diagnostics.",
-						noremap = true,
-						silent = true,
-					})
+					local map = function(mode, lhs, rhs, desc)
+						vim.keymap.set(mode, lhs, rhs, { buffer = e.buf, desc = desc })
+					end
 
-					vim.keymap.set("n", "[d", "<CMD>lua vim.diagnostic.goto_prev()<CR>", {
-						buffer = e.buf,
-						desc = "Go to previous diagnostic.",
-						noremap = true,
-						silent = true,
-					})
-
-					vim.keymap.set("n", "]d", "<CMD>lua vim.diagnostic.goto_next()<CR>", {
-						buffer = e.buf,
-						desc = "Go to next diagnostic.",
-						noremap = true,
-						silent = true,
-					})
-
-					vim.keymap.set("n", "<LEADER>ca", "<CMD>lua vim.lsp.buf.code_action()<CR>", {
-						buffer = e.buf,
-						desc = "Open code actions.",
-						noremap = true,
-						silent = true,
-					})
-
-					vim.keymap.set("n", "<S-k>", "<CMD>lua vim.lsp.buf.hover()<CR>", {
-						buffer = e.buf,
-						desc = "Show documentation for word under cursor.",
-						noremap = true,
-						silent = true,
-					})
-
-					vim.keymap.set("n", "gd", "<CMD>lua vim.lsp.buf.definition()<CR>", {
-						buffer = e.buf,
-						desc = "Go to definition.",
-						noremap = true,
-						silent = true,
-					})
-
-					vim.keymap.set("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>", {
-						buffer = e.buf,
-						desc = "Go to declaration.",
-						noremap = true,
-						silent = true,
-					})
-
-					vim.keymap.set("n", "gi", "<CMD>lua vim.lsp.buf.implementation()<CR>", {
-						buffer = e.buf,
-						desc = "Show implementations.",
-						noremap = true,
-						silent = true,
-					})
-
-					vim.keymap.set("n", "gr", "<CMD>lua vim.lsp.buf.references()<CR>", {
-						buffer = e.buf,
-						desc = "Show references.",
-						noremap = true,
-						silent = true,
-					})
-
-					vim.keymap.set("n", "gt", "<CMD>lua vim.lsp.buf.type_definition()<CR>", {
-						buffer = e.buf,
-						desc = "Show type definition.",
-						noremap = true,
-						silent = true,
-					})
-
-					vim.keymap.set("n", "<LEADER>rn", "<CMD>lua vim.lsp.buf.rename()<CR>", {
-						buffer = e.buf,
-						desc = "Rename with LSP.",
-						noremap = true,
-						silent = true,
-					})
-
-					vim.keymap.set("n", "<C-s>", "<CMD>lua vim.lsp.buf.format()<CR>", {
-						buffer = e.buf,
-						desc = "Format with LSP.",
-						noremap = true,
-						silent = true,
-					})
+					map("n", "<LEADER>d", "<CMD>lua vim.diagnostic.open_float()<CR>", "Show current line diagnostics.")
+					map("n", "[d", "<CMD>lua vim.diagnostic.goto_prev()<CR>", "Go to previous diagnostic.")
+					map("n", "]d", "<CMD>lua vim.diagnostic.goto_next()<CR>", "Go to next diagnostic.")
+					map("n", "<LEADER>ca", "<CMD>lua vim.lsp.buf.code_action()<CR>", "Open code actions.")
+					map("n", "<S-k>", "<CMD>lua vim.lsp.buf.hover()<CR>", "Show documentation for word under cursor.")
+					map("n", "gd", "<CMD>lua vim.lsp.buf.definition()<CR>", "Go to definition.")
+					map("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>", "Go to declaration.")
+					map("n", "gi", "<CMD>lua vim.lsp.buf.implementation()<CR>", "Show implementations.")
+					map("n", "gr", "<CMD>lua vim.lsp.buf.references()<CR>", "Show references.")
+					map("n", "gt", "<CMD>lua vim.lsp.buf.type_definition()<CR>", "Show type definition.")
+					map("n", "<LEADER>rn", "<CMD>lua vim.lsp.buf.rename()<CR>", "Rename with LSP.")
+					map("n", "<C-s>", "<CMD>lua vim.lsp.buf.format()<CR>", "Format with LSP.")
 				end,
 				desc = "Assign specific keymaps when lsp attaches.",
 			})
 		end,
 	},
-	-- }}}
-
-	-- mason {{{
+	--}}}
+	-- williamboman/mason.nvim {{{
 	{
 		"williamboman/mason.nvim",
 		build = ":MasonUpdate",
 		keys = {
 			{
-				"<leader>mm",
-				"<cmd>Mason<cr>",
+				"<LEADER>mm",
+				"<CMD>Mason<CR>",
 				desc = "Open Mason.",
-				noremap = true,
-				silent = true,
 			},
 		},
 		config = function()
-			require("mason").setup({
-				ui = {
-					border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
-				},
-			})
 			local mr = require("mason-registry")
 			local ensure_installed = function()
 				for _, pkg_name in ipairs({
 					-- formatter
-					"prettierd",
+					"prettier",
 					"stylua",
 					-- linter
-					"eslint_d",
+					"eslint-lsp",
 					"golangci-lint",
 					-- lsp
-					"angular-language-server",
 					"bash-language-server",
 					"dockerfile-language-server",
 					"clangd",
@@ -218,6 +138,17 @@ return {
 					end
 				end
 			end
+
+			require("mason").setup({
+				ui = {
+					icons = {
+						package_installed = "[*]",
+						package_pending = "[~]",
+						package_uninstalled = "[x]",
+					},
+				},
+			})
+
 			if mr.refresh then
 				mr.refresh(ensure_installed)
 			else
@@ -225,9 +156,8 @@ return {
 			end
 		end,
 	},
-	-- }}}
-
-	-- formatter {{{
+	--}}}
+	-- stevearc/conform.nvim {{{
 	{
 		"stevearc/conform.nvim",
 		config = function()
@@ -238,16 +168,16 @@ return {
 					},
 				},
 				formatters_by_ft = {
-					css = { "prettierd" },
-					html = { "prettierd" },
-					javascript = { "prettierd" },
-					javascriptreact = { "prettierd" },
+					css = { "prettier" },
+					html = { "prettier" },
+					javascript = { "prettier" },
+					javascriptreact = { "prettier" },
 					lua = { "stylua" },
-					markdown = { "prettierd" },
+					markdown = { "prettier" },
 					rust = { "rustfmt" },
-					svelte = { "prettierd" },
-					typescript = { "prettierd" },
-					typescriptreact = { "prettierd" },
+					svelte = { "prettier" },
+					typescript = { "prettier" },
+					typescriptreact = { "prettier" },
 				},
 				format_on_save = {
 					async = false,
@@ -256,19 +186,13 @@ return {
 			})
 		end,
 	},
-	-- }}}
-
-	-- linter {{{
+	--}}}
+	-- mfussenegger/nvim-lint {{{
 	{
 		"mfussenegger/nvim-lint",
 		config = function()
 			require("lint").linters_by_ft = {
 				go = { "golangcilint" },
-				javascript = { "eslint_d" },
-				javascriptreact = { "eslint_d" },
-				svelte = { "eslint_d" },
-				typescript = { "eslint_d" },
-				typescriptreact = { "eslint_d" },
 			}
 
 			vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
@@ -276,17 +200,10 @@ return {
 				callback = function()
 					require("lint").try_lint()
 				end,
-				pattern = {
-					"*.go",
-					"*.js",
-					"*.jsx",
-					"*.svelte",
-					"*.ts",
-					"*.tsx",
-				},
+				pattern = { "*.go" },
 				desc = "Run linter.",
 			})
 		end,
 	},
-	-- }}}
+	--}}}
 }

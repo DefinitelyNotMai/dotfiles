@@ -2,11 +2,9 @@ return {
 	"iamcco/markdown-preview.nvim",
 	keys = {
 		{
-			"<leader>md",
-			"<cmd>MarkdownPreview<cr>",
+			"<LEADER>md",
+			"<CMD>MarkdownPreview<CR>",
 			desc = "Toggle markdown preview.",
-			noremap = true,
-			silent = true,
 		},
 	},
 	ft = "markdown",

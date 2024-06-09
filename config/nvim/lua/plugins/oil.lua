@@ -1,21 +1,18 @@
 return {
 	"stevearc/oil.nvim",
+	event = "VeryLazy",
 	keys = {
 		{
 			"<LEADER>e",
-			"<CMD>Oil<CR>",
-			desc = "Open Oil or go to parent directory.",
-			noremap = true,
-			silent = true,
+			function()
+				require("oil").open()
+			end,
+			desc = "Go to parent directory.",
 		},
 	},
-	lazy = false,
 	config = function()
 		require("oil").setup({
-			default_file_explorer = true,
-			view_options = {
-				show_hidden = true,
-			},
+			view_options = { show_hidden = true },
 		})
 	end,
 }
